@@ -25,7 +25,7 @@ function getBotResponse(userText) {
     confidence: 0 
   };
 
-  
+  // Regels - eenvoudige keyword matching
   if (text.includes('wachtwoord') || text.includes('reset')) {
     response.text = "U kunt uw wachtwoord resetten via de knop 'Wachtwoord vergeten' op de loginpagina. U ontvangt daarna een e-mail met een reset-link.";
     response.confidence = 0.95;
@@ -49,4 +49,34 @@ function getBotResponse(userText) {
   return response;
 }
 
+
+sendBtn.addEventListener('click', () => {
+  const text = input.value.trim();
+  if (!text) return;
+  appendMessage('user', text);
+  input.value = '';
  
+  setTimeout(() => {
+    const botResp = getBotResponse(text);
+    appendMessage('bot', botResp.text);
+    saveLog({ sender: 'user', text: text, time: new Date().toISOString() });
+    saveLog({ sender: 'bot', text: botResp.text, confidence: botResp.confidence, time: new Date().toISOString() });
+  }, 350);
+});
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    sendBtn.click();
+  }
+});
+
+function saveLog(entry) {
+  try {
+    const key = 'chatbot_logs_v1';
+    const logs = JSON.parse(localStorage.getItem(key) || '[]');
+    logs.push(entry);
+    localStorage.setItem(key, JSON.stringify(logs));
+  } catch (err) {
+    console.warn('Kon log niet opslaan', err);
+  }
+}
