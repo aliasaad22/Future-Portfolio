@@ -7,7 +7,52 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  
+  <main class="container">
+    <header>
+      <h1>Customer Service Chatbot (Demo)</h1>
+      <p class="subtitle">Proof-of-concept: automatische beantwoording van eenvoudige supportvragen.</p>
+    </header>
+
+    <section class="chat-section">
+      <div id="chatbox" class="chatbox" aria-live="polite"></div>
+
+      <form id="inputForm" class="input-area" onsubmit="return false;">
+        <input id="userInput" type="text" placeholder="Typ je vraag... (bv. 'Hoe reset ik mijn wachtwoord?')" aria-label="Type je vraag" />
+        <button id="sendBtn" type="button">Verstuur</button>
+        <button id="runTestsBtn" type="button" class="muted">Voer automatische tests uit</button>
+      </form>
+    </section>
+
+    <section class="results-section">
+      <h2>Testresultaten (automatisch)</h2>
+      <table id="resultsTable" class="results-table">
+        <thead>
+          <tr>
+            <th>Testcase</th>
+            <th>Verwachte uitkomst</th>
+            <th>Bot resultaat</th>
+            <th>Nauwkeurigheid</th>
+            <th>Opmerking</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody">
+          <!-- Dynamisch gevuld -->
+        </tbody>
+      </table>
+      <div id="summary" class="summary"></div>
+    </section>
+
+    <section class="about">
+      <h2>Over dit project</h2>
+      <p>Deze demo toont een rule-based chatbot (keyword matching) gebouwd met HTML/CSS/JS. Geen externe libraries of API's vereist.</p>
+      <p>Bestanden: <code>index.html</code>, <code>style.css</code>, <code>script.js</code></p>
+    </section>
+
+    <footer>
+      <small>Student: ALi   Vak: Future Portfolio</small>
+    </footer>
+  </main>
+
   <script src="script.js"></script>
 </body>
 </html>
