@@ -33,13 +33,13 @@ function getBotResponse(userText) {
     response.confidence = 0.9;
   } else if (text.includes('abonnement') || text.includes('plan') || text.includes('pakket')) {
     response.text = "We hebben drie abonnementen: Basic (basisfuncties), Premium (extra's) en Pro (volledige functionaliteit). Welke features zoekt u?";
-    response.confidence = 0.75;
+    response.confidence = 0.85;
   } else if (text.includes('retour') || text.includes('retourneren') || text.includes('terugsturen')) {
     response.text = "Voor retourneren kunt u het retourformulier invullen in 'Mijn bestellingen'. Retourzendingen worden binnen 14 dagen verwerkt.";
-    response.confidence = 0.85;
+    response.confidence = 0.9;
   } else if (text.includes('klacht') || text.includes('boos') || text.includes('klantenservice')) {
     response.text = "Het spijt me te horen dat u een slechte ervaring heeft. Ik kan uw klacht registreren en doorsturen naar een medewerker. Wilt u dat ik uw gegevens doorgeef?";
-    response.confidence = 0.4; // laag - empathie niet echt
+    response.confidence = 0.7; // laag - empathie niet echt
   } else if (text.length < 3) {
     response.text = "Kunt u wat meer details geven? Bijvoorbeeld 'Hoe reset ik mijn wachtwoord?'";
     response.confidence = 0.3;
